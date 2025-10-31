@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998006712187",
+    "project_id": "lms-pintar-4e06e",
+    "storage_bucket": "lms-pintar-4e06e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998006712187:android:a83e9e21c5581b3be7ffde",
+        "android_client_info": {
+          "package_name": "com.example.lms_pintar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFhIug37yDQvj9CrkAihCH4gsWarO355o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
