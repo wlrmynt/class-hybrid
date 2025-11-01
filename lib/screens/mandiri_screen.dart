@@ -1,58 +1,83 @@
 import 'package:flutter/material.dart';
-import '../pages/detail_materi_page.dart'; // pastikan path ini benar
+import '../models/course.dart';
+import '../widgets/course_card.dart';
 
 class MandiriScreen extends StatelessWidget {
   const MandiriScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> materiMandiri = [
-      {
-        'judul': 'Pengenalan Flutter',
-        'deskripsi':
-            'Materi ini menjelaskan dasar-dasar Flutter dan komponennya.',
-        'videoUrl':
-            'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
-      },
-      {
-        'judul': 'Widget Dasar Flutter',
-        'deskripsi': 'Membahas widget-widget penting di Flutter.',
-        'videoUrl':
-            'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
-      },
-    ];
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Materi Mandiri'),
-        backgroundColor: Colors.blue[600],
-      ),
-      body: ListView.builder(
-        itemCount: materiMandiri.length,
-        itemBuilder: (context, index) {
-          final materi = materiMandiri[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            child: ListTile(
-              title: Text(materi['judul']!),
-              subtitle: Text(materi['deskripsi']!),
-              trailing: const Icon(Icons.play_circle_fill, color: Colors.blue),
-              onTap: () {
-                // ⬇️ Navigasi ke halaman detail
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => DetailMateriPage(
-                      judul: materi['judul']!,
-                      deskripsi: materi['deskripsi']!,
-                      videoUrl: materi['videoUrl']!,
-                    ),
-                  ),
-                );
-              },
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Mandiri",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-          );
-        },
+            const SizedBox(height: 12),
+            Expanded(
+              child: GridView.builder(
+                itemCount: mockCourses.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                ),
+                itemBuilder: (context, index) {
+                  final c = mockCourses[index];
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(color: Colors.grey.shade200, blurRadius: 6),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(16),
+                            ),
+                            child: Image.network(
+                              c.thumbnail,
+                              height: 100,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(
+                              c.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Text(
+                              c.instructor,
+                              style: TextStyle(color: Colors.grey[600]),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

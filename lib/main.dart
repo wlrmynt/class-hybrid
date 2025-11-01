@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/public_screen.dart';
 import 'screens/mandiri_screen.dart';
+import 'screens/class_screen.dart';
 import 'theme.dart';
 import 'pages/materi_list_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,8 +23,8 @@ class _LMSAppState extends State<LMSApp> {
 
   final List<Widget> _screens = const [
     HomeScreen(),
-    PublicScreen(),
     MandiriScreen(),
+    ClassScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -34,7 +34,7 @@ class _LMSAppState extends State<LMSApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LMS Pintar',
+      title: 'Class Hybrid',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       home: Scaffold(
@@ -46,9 +46,9 @@ class _LMSAppState extends State<LMSApp> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
             BottomNavigationBarItem(
               icon: Icon(Icons.library_books),
-              label: 'Materi Publik',
+              label: 'Mandiri',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Mandiri'),
+            BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Class'),
           ],
         ),
       ),

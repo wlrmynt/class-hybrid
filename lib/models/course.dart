@@ -3,12 +3,14 @@ class Course {
   final String instructor;
   final String thumbnail;
   final double progress;
+  final bool isMandiri;
 
   Course({
     required this.title,
     required this.instructor,
     required this.thumbnail,
     this.progress = 0.0,
+    this.isMandiri = false, // default tidak mandiri
   });
 }
 
